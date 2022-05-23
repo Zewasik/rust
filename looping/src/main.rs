@@ -12,7 +12,7 @@ fn main() -> io::Result<()> {
             i += 1
         }
     };
-    println!("{}", num);
+    println!("It took you {} trials to get the right answer", num);
 
     Ok(())
 }
