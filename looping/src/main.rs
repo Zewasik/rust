@@ -12,7 +12,10 @@ fn main() -> io::Result<()> {
             i += 1
         }
     };
-    println!("It took you {} trials to get the right answer", num);
-
+    if num == 1 {
+        println!("It took you {} trial to get the right answer", num);
+    } else {
+        println!("It took you {} trials to get the right answer", num);
+    }
     Ok(())
 }
