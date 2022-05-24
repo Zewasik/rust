@@ -1,6 +1,5 @@
 pub fn nbr_function(c: i32) -> (i32, f64, f64) {
-    let copy: f64 = c.clone() as f64;
-    return (c, copy.exp(), copy.ln());
+    return (c, (c as f64).exp(), (c as f64).ln());
 }
 
 pub fn str_function(a: String) -> (String, String) {
