@@ -1,4 +1,4 @@
-#[derive(Debug)]
+#[derive(Debug, Eq)]
 
 pub struct Student(pub i32, pub String, pub String);
 
