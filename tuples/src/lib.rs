@@ -1,4 +1,4 @@
-#[derive(Debug, Eq)]
+#[derive(Debug, Eq, PartialEq)]
 
 pub struct Student(pub i32, pub String, pub String);
 
