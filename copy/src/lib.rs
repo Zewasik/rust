@@ -1,25 +1,25 @@
 pub fn nbr_function(c: i32) -> (i32, f64, f64) {
-    return (c, (c as f64).exp(), (c as f64).ln().abs());
+    return (
+        c.clone(),
+        f64::from(c.clone()).exp(),
+        (c.clone() as f64).ln().abs(),
+    );
 }
 
 pub fn str_function(a: String) -> (String, String) {
-    let copy = a.clone();
-    let mut nums: Vec<String> = Vec::new();
-
-    for value in copy.split(" ") {
-        let temp: f64 = value.parse().unwrap();
-        nums.push(temp.exp().to_string());
+    let mut expo = String::new();
+    for num in a.clone().split(" ") {
+        expo.push_str(num.parse::<f64>().unwrap().exp().to_string().as_str());
+        expo.push(' ');
     }
-
-    return (a, nums.join(" "));
+    expo.pop();
+    return (a.clone().into(), expo);
 }
 
 pub fn vec_function(b: Vec<i32>) -> (Vec<i32>, Vec<f64>) {
-    let mut copy: Vec<f64> = Vec::new();
-
-    for value in b.iter() {
-        copy.push((*value as f64).ln().abs());
+    let mut expo = Vec::<f64>::new();
+    for num in b.clone() {
+        expo.push((num as f64).ln().abs());
     }
-
-    return (b, copy);
+    return (b.clone(), expo);
 }
