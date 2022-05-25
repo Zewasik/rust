@@ -1,4 +1,4 @@
-use tuples::*;
+use tuples_refs::*;
 
 fn main() {
     let student = Student(20, "Pedro".to_string(), "Domingos".to_string());
