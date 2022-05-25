@@ -5,7 +5,7 @@ pub fn arrange_phrase(phrase: &str) -> String {
     for word in words {
         let mut temp_str = "".to_string();
         for ch in word.chars() {
-            if ch.is_ascii_digit() {
+            if ch >= '0' && ch <= '9' {
                 index = ch as usize - 48; // 48 is '0' at ascii
             } else {
                 temp_str += &ch.to_string();
