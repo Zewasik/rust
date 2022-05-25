@@ -1,8 +1,8 @@
 pub fn arrange_phrase(phrase: &str) -> String {
     let words: Vec<&str> = phrase.split(" ").collect();
     let mut correct_phrase: Vec<String> = vec!["".to_string(); words.len() - 1];
+    let mut index = 0;
     for &word in &words {
-        let mut index = 0;
         let mut temp_str = "".to_string();
         for ch in word.chars() {
             if ch.is_ascii_digit() {
