@@ -12,10 +12,10 @@ pub fn arrange_phrase(phrase: &str) -> String {
             }
         }
         if index < correct_phrase.len() {
-            correct_phrase.remove(index - 1);
+            correct_phrase.remove(&index - 1);
         }
-        correct_phrase.insert(index - 1, temp_str);
+        correct_phrase.insert(&index - 1, temp_str);
     }
 
-    return correct_phrase.join(" ").trim().to_string();
+    return correct_phrase.join(" ");
 }
