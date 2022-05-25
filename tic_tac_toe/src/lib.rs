@@ -17,13 +17,13 @@ pub fn diagonals(player: &str, table: &Vec<Vec<&str>>) -> bool {
             || (player == table[2][0] && player == table[0][2]));
 }
 
-pub fn horizontal(player: &str, table: &Vec<Vec<&str>>) -> bool {
+pub fn vertical(player: &str, table: &Vec<Vec<&str>>) -> bool {
     return (player == table[0][0] && player == table[1][0] && player == table[2][0])
         || (player == table[0][1] && player == table[1][1] && player == table[2][1])
         || (player == table[0][2] && player == table[1][2] && player == table[2][2]);
 }
 
-pub fn vertical(player: &str, table: &Vec<Vec<&str>>) -> bool {
+pub fn horizontal(player: &str, table: &Vec<Vec<&str>>) -> bool {
     return (player == table[0][0] && player == table[0][1] && player == table[0][2])
         || (player == table[1][0] && player == table[1][1] && player == table[1][2])
         || (player == table[2][0] && player == table[2][1] && player == table[2][2]);
