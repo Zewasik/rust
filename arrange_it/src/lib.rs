@@ -5,9 +5,8 @@ pub fn arrange_phrase(phrase: &str) -> String {
         let mut index: usize = 0;
         let mut temp_str = "".to_string();
         for ch in word.chars() {
-            if ch >= '0' && ch <= '9' {
-                index = ch.to_digit(10).unwrap() as usize;
-                println!("{} {}", index, correct_phrase.len())
+            if ch.is_ascii_digit() {
+                index = ch as usize - 48;
             } else {
                 temp_str += &ch.to_string();
             }
