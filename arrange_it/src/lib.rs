@@ -1,7 +1,7 @@
 pub fn arrange_phrase(phrase: &str) -> String {
     let words: Vec<&str> = phrase.split(" ").collect();
     let mut correct_phrase: Vec<String> = vec!["".to_string(); words.len() - 1];
-    for word in words {
+    for word in &words {
         let mut index: usize = 0;
         let mut temp_str = "".to_string();
         for ch in word.chars() {
@@ -18,8 +18,5 @@ pub fn arrange_phrase(phrase: &str) -> String {
         correct_phrase.insert(index - 1, temp_str);
     }
 
-    for foo in correct_phrase.iter() {
-        println!("{}", foo);
-    }
     return correct_phrase.join(" ").trim().to_string();
 }
