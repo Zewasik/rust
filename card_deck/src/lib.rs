@@ -51,7 +51,7 @@ pub struct Card {
     pub rank: Rank,
 }
 
-pub fn winner_card(car: Card) -> bool {
+pub fn winner_card(car: &Card) -> bool {
     return car.suit == Suit::Suit("Spade".to_string())
         && car.rank == Rank::Rank("Ace".to_string());
 }
