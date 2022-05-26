@@ -3,13 +3,28 @@ use rand::Rng;
 #[derive(Debug, PartialEq, Eq)]
 
 pub enum Suit {
-    Suit(String),
+    Heart,
+    Diamond,
+    Spade,
+    Club,
 }
 
 #[derive(Debug, PartialEq, Eq)]
 
 pub enum Rank {
-    Rank(String),
+    Ace,
+    Two = 2,
+    Three = 3,
+    Four = 4,
+    Five = 5,
+    Six = 6,
+    Seven = 7,
+    Eight = 8,
+    Nine = 9,
+    Ten = 10,
+    Jack,
+    Queen,
+    King,
 }
 
 impl Suit {
@@ -20,10 +35,10 @@ impl Suit {
 
     pub fn translate(value: u8) -> Suit {
         match value {
-            1 => return Suit::Suit("Heart".to_string()),
-            2 => return Suit::Suit("Diamonds".to_string()),
-            3 => return Suit::Suit("Spade".to_string()),
-            4 => return Suit::Suit("Club".to_string()),
+            1 => return Suit::Heart,
+            2 => return Suit::Diamond,
+            3 => return Suit::Spade,
+            4 => return Suit::Club,
             _ => unreachable!(),
         }
     }
@@ -37,11 +52,19 @@ impl Rank {
 
     pub fn translate(value: u8) -> Rank {
         match value {
-            2..=10 => return Rank::Rank(value.to_string()),
-            1 => return Rank::Rank("Ace".to_string()),
-            11 => return Rank::Rank("Jack".to_string()),
-            12 => return Rank::Rank("Queen".to_string()),
-            13 => return Rank::Rank("King".to_string()),
+            1 => return Rank::Ace,
+            2 => return Rank::Two,
+            3 => return Rank::Three,
+            4 => return Rank::Four,
+            5 => return Rank::Five,
+            6 => return Rank::Six,
+            7 => return Rank::Seven,
+            8 => return Rank::Eight,
+            9 => return Rank::Nine,
+            10 => return Rank::Ten,
+            11 => return Rank::Jack,
+            12 => return Rank::Queen,
+            13 => return Rank::King,
             _ => unreachable!(),
         }
     }
@@ -54,6 +77,5 @@ pub struct Card {
 }
 
 pub fn winner_card(car: &Card) -> bool {
-    return car.suit == Suit::Suit("Spade".to_string())
-        && car.rank == Rank::Rank("Ace".to_string());
+    return car.suit == Suit::Spade && car.rank == Rank::Ace;
 }
