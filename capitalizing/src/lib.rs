@@ -1,9 +1,12 @@
 pub fn capitalize_first(input: &str) -> String {
+    if input == "" {
+        return "".to_string();
+    }
     return input[0..1].to_uppercase().to_string() + &input[1..];
 }
 
 pub fn title_case(input: &str) -> String {
-    let mut temp_str: String = String::new();
+    let mut temp_str: String = String::from("");
     let mut is_new = true;
     for ch in input.chars() {
         if is_new == true {
@@ -22,7 +25,7 @@ pub fn title_case(input: &str) -> String {
 }
 
 pub fn change_case(input: &str) -> String {
-    let mut temp_str: String = String::new();
+    let mut temp_str: String = String::from("");
 
     for ch in input.chars() {
         if ch.is_ascii_lowercase() {
