@@ -2,7 +2,7 @@ use unwrap_or_expect::*;
 
 fn main() {
     // // if uncommented, the below line will give an expect "ERROR "
-    // println!("{:?}", expect(vec![1, 3, 2, 5]));
+    println!("{:?}", expect(vec![1, 3, 2, 5]));
 
     println!("{:?}", unwrap_or(vec![1, 3, 2, 5]));
     println!("{:?}", unwrap_or(vec![1, 3, 5]));

@@ -10,7 +10,7 @@ pub fn odd_to_even(data: Vec<u32>) -> Result<Vec<u32>, (String, Vec<u32>)> {
 pub fn expect(v: Vec<u32>) -> Vec<u32> {
     match odd_to_even(v) {
         Ok(result) => result,
-        Err(error) => panic!("ERROR {:?}", error),
+        Err(error) => panic!("ERROR : {:?}", error),
     }
 }
 pub fn unwrap_or(v: Vec<u32>) -> Vec<u32> {
@@ -28,7 +28,7 @@ pub fn unwrap_err(v: Vec<u32>) -> (String, Vec<u32>) {
 pub fn unwrap(v: Vec<u32>) -> Vec<u32> {
     match odd_to_even(v) {
         Ok(result) => result,
-        Err(error) => panic!("{:?}", error),
+        Err(error) => Result::unwrap(Err(error)),
     }
 }
 pub fn unwrap_or_else(v: Vec<u32>) -> Vec<u32> {
