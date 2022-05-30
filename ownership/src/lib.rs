@@ -1,4 +1,4 @@
-pub fn first_subword(mut s: String) -> String {
+pub fn first_subword(s: String) -> String {
     let mut i = 0;
     for value in s.chars() {
         if i != 0 && (value >= 'A' && value <= 'Z' || value == '_') {
