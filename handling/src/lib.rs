@@ -10,5 +10,6 @@ pub fn open_or_create(file: &str, content: &str) {
     {
         Ok(mut result) => result.write_all(content.as_bytes()),
         Err(error) => panic!("{}", error),
-    };
+    }
+    .unwrap();
 }
