@@ -1,3 +1,4 @@
+#[path = "err.rs"]
 mod err;
 use err::{ParseErr, ReadErr};
 
