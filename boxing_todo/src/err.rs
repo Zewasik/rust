@@ -38,6 +38,6 @@ impl Error for ParseErr {
 
 impl Error for ReadErr {
     fn source(&self) -> Option<&(dyn Error + 'static)> {
-        Some(self.child_err.as_ref())
+        Some(self)
     }
 }
