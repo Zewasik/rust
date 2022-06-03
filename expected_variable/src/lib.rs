@@ -1,5 +1,6 @@
 pub mod edit_distance;
 use edit_distance::edit_distance;
+
 pub fn expected_variable(to_compare: &str, expected: &str) -> Option<String> {
     if to_compare.contains(' ')
         || to_compare.contains('-')
