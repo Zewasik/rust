@@ -1,6 +1,6 @@
 pub fn talking(text: &str) -> &str {
     let mut variant = 4;
-    if text.len() > 0 {
+    if text.chars().count() > 0 {
         if text
             .chars()
             .all(|c| c.is_uppercase() || c == ' ' || c == '!' || c == '?' || c == '\'' || c == ',')
