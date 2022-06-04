@@ -1,14 +1,21 @@
 pub fn talking(text: &str) -> &str {
+    let text = text.trim();
     let mut variant = 4;
-    if text.chars().count() > 0 {
-        if text.chars().all(|c| c.is_uppercase() || !c.is_alphabetic()) {
-            if text.chars().last().unwrap() != '?' {
-                variant = 0;
+
+    if text.len() > 0 {
+        if text.chars().any(|c| matches!(c, 'a'..='z')) {
+            if text.chars().last().unwrap() == '?' {
+                variant = 1;
             } else {
-                variant = 2;
+                variant = 4;
             }
-        }
-        if text.chars().any(|c| matches!(c, 'a'..='z')) && text.chars().last().unwrap() == '?' {
+        } else if text.chars().any(|c| matches!(c, 'A'..='Z')) {
+            if text.chars().last().unwrap() == '?' {
+                variant = 2;
+            } else {
+                variant = 0;
+            }
+        } else {
             variant = 1;
         }
     } else {
