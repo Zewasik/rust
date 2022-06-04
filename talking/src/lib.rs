@@ -1,4 +1,9 @@
 pub fn talking(text: &str) -> &str {
+    let yell_0 = "There is no need to yell, calm down!";
+    let ask_1 = "Sure.";
+    let yell_q_2 = "Quiet, I am thinking!";
+    let nothing_3 = "Just say something!";
+    let deafult_4 = "Interesting";
     let mut variant = 4;
     if text.len() > 0 {
         if text
@@ -18,10 +23,11 @@ pub fn talking(text: &str) -> &str {
         variant = 3;
     }
     match variant {
-        0 => return "There is no need to yell, calm down!",
-        1 => return "Sure.",
-        2 => return "Quiet, I am thinking!",
-        3 => return "Just say something!",
-        _ => return "Interesting",
+        0 => return yell_0,
+        1 => return ask_1,
+        2 => return yell_q_2,
+        3 => return nothing_3,
+        4 => return deafult_4,
+        _ => return deafult_4,
     }
 }
