@@ -8,7 +8,7 @@ pub fn talking(text: &str) -> &str {
                 variant = 2;
             }
         }
-        if text.chars().any(|c| matches!(c, 'a'..='z')) && text.chars().last().unwrap() == '?' {
+        if text.chars().any(|c| matches!(c, 'a'..='z')) && text.contains('?') {
             variant = 1;
         }
     } else {
