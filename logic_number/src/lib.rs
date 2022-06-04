@@ -9,11 +9,11 @@ pub fn number_logic(num: u32) -> bool {
         temp /= 10;
     }
 
-    let mut sum = 0.0;
+    let mut sum = 0;
 
     for value in &nums {
-        sum += (*value as f64).powi(nums.len() as i32);
+        sum += value.pow(nums.len() as u32);
     }
 
-    sum as u32 == num
+    sum == num
 }
