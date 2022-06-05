@@ -1,7 +1,7 @@
-mod boss;
-mod member;
-
 pub mod mobs {
+    mod boss;
+    mod member;
+
     pub struct Mob {
         name: String,
         boss: Boss,
