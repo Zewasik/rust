@@ -75,7 +75,10 @@ fn triplet_convert(num: &u64) -> String {
             if *num < 20 {
                 ans += uncommon.get(num).unwrap()
             } else {
-                ans = ans + tens.get(&(num / 10)).unwrap() + "-" + units.get(&(num % 10)).unwrap()
+                ans = ans
+                    + tens.get(&(num / 10)).unwrap()
+                    + if num % 10 != 0 { "-" } else { "" }
+                    + units.get(&(num % 10)).unwrap()
             }
         }
         _ => {
