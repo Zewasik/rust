@@ -10,4 +10,5 @@ fn main() {
     println!("{}", pig_latin(&String::from("")));
     println!("{}", pig_latin(&String::from("xe")));
     println!("{}", pig_latin(&String::from("squ")));
+    println!("{}", pig_latin(&String::from("queen")));
 }
