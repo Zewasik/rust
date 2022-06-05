@@ -89,7 +89,7 @@ fn triplet_convert(num: &u64) -> String {
         }
     };
 
-    ans
+    ans.trim().to_string()
 }
 
 // nine hundred ninety-nine thousand nine hundred ninety-nine
