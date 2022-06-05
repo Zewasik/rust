@@ -1,4 +1,5 @@
 pub mod boss {
+    #[derive(Debug, CLone, PartialEq)]
     pub struct Boss {
         name: String,
         age: u8,
