@@ -15,7 +15,7 @@ pub fn median(list: &Vec<i32>) -> i32 {
     temp_list.sort();
 
     return if temp_list.len() % 2 == 0 {
-        (temp_list[temp_list.len() / 2 + 1] + temp_list[temp_list.len() / 2]) / 2
+        (temp_list[temp_list.len() / 2 - 1] + temp_list[temp_list.len() / 2]) / 2
     } else {
         temp_list[temp_list.len() / 2]
     };
