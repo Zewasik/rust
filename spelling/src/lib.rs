@@ -17,12 +17,13 @@ pub fn spell(n: u64) -> String {
 
     for (index, value) in split_thousand.iter().enumerate().rev() {
         ans += &triplet_convert(value);
-
-        match index {
-            2 => ans += " million ",
-            1 => ans += " thousand ",
-            _ => (),
-        };
+        if *value != 0 {
+            match index {
+                2 => ans += " million ",
+                1 => ans += " thousand ",
+                _ => (),
+            };
+        }
     }
 
     ans.trim().to_string()
