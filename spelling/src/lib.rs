@@ -25,7 +25,7 @@ pub fn spell(n: u64) -> String {
         };
     }
 
-    ans
+    ans.trim().to_string()
 }
 
 fn triplet_convert(num: &u64) -> String {
@@ -89,7 +89,7 @@ fn triplet_convert(num: &u64) -> String {
         }
     };
 
-    ans.trim().to_string()
+    ans
 }
 
 // nine hundred ninety-nine thousand nine hundred ninety-nine
