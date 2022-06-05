@@ -9,7 +9,7 @@ pub fn expected_variable(to_compare: &str, expected: &str) -> Option<String> {
     };
 
     let dist = edit_distance(&to_compare.to_lowercase(), &expected.to_lowercase());
-    let ans = ((1.0 - (dist as f64 / expected.len() as f64)) * 100.0).round() as i32;
+    let ans = ((1.0 - dist as f64 / expected.len() as f64) * 100.0).round() as i32;
 
     if ans < 50 {
         return None;
