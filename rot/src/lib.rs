@@ -14,7 +14,7 @@ pub fn rotate(input: &str, key: i8) -> String {
                 )
             } else {
                 (
-                    b'A' as u32,
+                    'A' as u32,
                     if key < 0 {
                         (26 + key) as u32
                     } else {
