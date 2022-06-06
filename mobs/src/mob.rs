@@ -2,7 +2,7 @@ pub mod mobs {
     mod boss;
     mod member;
 
-    #[derive(Debug, CLone, PartialEq)]
+    #[derive(Debug, Clone, PartialEq)]
     pub struct Mob {
         name: String,
         boss: Boss,
