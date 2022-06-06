@@ -38,9 +38,10 @@ impl Game {
     }
 
     pub fn delete(self) -> String {
+        let id = self.id;
         drop(self);
 
-        "game deleted: id -> 0".to_string()
+        format!("game deleted: id -> {}", id)
     }
 }
 
