@@ -3,11 +3,6 @@ pub struct WorkEnvironment {
     pub grade: Link,
 }
 
-// pub enum Link {
-//     Some(Box<Worker>, Box<Link>),
-//     None,
-// }
-
 pub type Link = Option<Box<Worker>>;
 
 #[derive(Debug, Clone, Eq, PartialEq)]
