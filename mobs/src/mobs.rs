@@ -1,6 +1,8 @@
+pub mod boss;
+pub mod member;
+
 pub mod mobs {
-    mod boss;
-    mod member;
+    use super::{boss::boss::Boss, member::member::Member};
 
     #[derive(Debug, Clone, PartialEq)]
     pub struct Mob {
@@ -13,7 +15,7 @@ pub mod mobs {
 
     impl Mob {
         pub fn recruit(&self, name: String, age: u8) {
-            self.members.push(); // todo push Member
+            // self.members.push(); // todo push Member
         }
 
         pub fn attack(&self, other: Mob) {} // todo: remove last member if less power, if draw attackers lost

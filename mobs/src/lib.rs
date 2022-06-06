@@ -1,1 +1,1 @@
-mod mob;
+mod mobs;

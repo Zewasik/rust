@@ -1,5 +1,5 @@
 pub mod member {
-    #[derive(Debug, CLone, PartialEq)]
+    #[derive(Debug, Clone, PartialEq)]
     pub enum Role {
         Underboss,
         Caporegime,
@@ -7,7 +7,7 @@ pub mod member {
         Associate,
     }
 
-    #[derive(Debug, CLone, PartialEq)]
+    #[derive(Debug, Clone, PartialEq)]
     pub struct Member {
         name: String,
         role: Role,
