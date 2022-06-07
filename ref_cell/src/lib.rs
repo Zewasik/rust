@@ -1,50 +1,42 @@
-pub use std::rc::Rc;
-pub trait Logger {
-    fn warning(&self, msg: &str) {
-        println!("Warning: {}", msg)
-    }
-    fn info(&self, msg: &str) {
-        println!("Info: {}", msg)
-    }
-    fn error(&self, msg: &str) {
-        println!("Error: {}", msg)
-    }
+pub use std::{cell::RefCell, collections::HashMap};
+mod messenger;
+pub use messenger::*;
+
+pub struct Worker {
+    pub track_value: Rc<usize>,
+    pub mapped_messages: RefCell<HashMap<String, String>>,
+    pub all_messages: RefCell<Vec<String>>,
 }
 
-pub struct Tracker<'a, T: Logger> {
-    logger: &'a T,
-    max: usize,
-}
-
-impl<'a, T> Tracker<'a, T>
-where
-    T: Logger,
-{
-    pub fn new(logger: &T, max: usize) -> Tracker<T> {
-        Tracker { logger, max }
-    }
-
-    pub fn set_value(&self, value: &Rc<usize>) {
-        let diff = Rc::strong_count(&value) * 100 / self.max;
-
-        match diff {
-            100.. => self.logger.error("Error: you are over your quota!"), //Error:
-            70..=99 => self.logger.warning(
-                format!(
-                    "Warning: you have used up over {}% of your quota! Proceeds with precaution", //Warning:
-                    diff
-                )
-                .as_str(),
-            ),
-            _ => (),
+impl Worker {
+    pub fn new(track_value: usize) -> Worker {
+        Worker {
+            track_value: Rc::new(track_value),
+            mapped_messages: RefCell::new(HashMap::new()),
+            all_messages: RefCell::new(vec![]),
         }
     }
+}
 
-    pub fn peek(&self, value: &Rc<usize>) {
-        let diff = Rc::strong_count(&value) * 100 / self.max;
+impl Logger for Worker {
+    fn warning(&self, msg: &str) {
+        self.mapped_messages
+            .borrow_mut()
+            .insert(String::from("Warning"), msg.replace("Warning: ", ""));
+        self.all_messages.borrow_mut().push(msg.to_string())
+    }
 
-        self.logger
-            .info(format!("Info: you are using up too {}% of your quote", diff).as_str())
-        //Info:
+    fn info(&self, msg: &str) {
+        self.mapped_messages
+            .borrow_mut()
+            .insert(String::from("Info"), msg.replace("Info: ", ""));
+        self.all_messages.borrow_mut().push(msg.to_string())
+    }
+
+    fn error(&self, msg: &str) {
+        self.mapped_messages
+            .borrow_mut()
+            .insert(String::from("Error"), msg.replace("Error: ", ""));
+        self.all_messages.borrow_mut().push(msg.to_string())
     }
 }
