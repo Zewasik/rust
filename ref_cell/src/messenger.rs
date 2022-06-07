@@ -6,7 +6,7 @@ trait Logger {
     fn error(&self, msg: &str) {}
 }
 
-struct Tracker<'a> {
+pub struct Tracker<'a> {
     logger: &'a dyn Logger,
     value: usize,
     max: usize,
