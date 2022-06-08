@@ -32,7 +32,7 @@ impl Workers {
     pub fn add_drop(&self, id: usize) {
         let mut temp = self.states.borrow_mut();
         if *temp.get(id).unwrap() {
-            panic!("Cannot drop X, because its already dropped")
+            panic!("{} is already dropped", id)
         } else {
             temp[id] = true;
             self.drops.set(self.drops.get() + 1); // repair this part
