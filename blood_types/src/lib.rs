@@ -1,15 +1,15 @@
 #[derive(Debug, PartialEq, Eq, Clone, PartialOrd, Ord)]
 pub enum Antigen {
-    A = 2,
-    AB = 4,
-    B = 3,
-    O = 1,
+    A = 3,
+    AB = 1,
+    B = 4,
+    O = 2,
 }
 
 #[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone)]
 pub enum RhFactor {
-    Positive,
-    Negative,
+    Positive = 1,
+    Negative = 2,
 }
 
 #[derive(Debug, PartialEq, Eq, PartialOrd)]
