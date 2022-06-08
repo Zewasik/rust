@@ -12,20 +12,23 @@ pub trait AppendStr {
 }
 
 impl AppendStr for StringValue {
-    fn append_str(mut self, new_str: String) -> Self {
-        self.value.push_str(&new_str);
-        self
+    fn append_str(self, new_str: String) -> Self {
+        Self {
+            value: self.value + &new_str,
+        }
     }
 
-    fn append_number(mut self, new_number: f64) -> Self {
-        self.value.push_str(&new_number.to_string());
-        self
+    fn append_number(self, new_number: f64) -> Self {
+        Self {
+            value: self.value + &new_number.to_string(),
+        }
     }
 
-    fn remove_punctuation_marks(mut self) -> Self {
-        self.value = self
-            .value
-            .replace(|ch| ch == '.' || ch == ',' || ch == '?' || ch == '!', "");
-        self
+    fn remove_punctuation_marks(self) -> Self {
+        Self {
+            value: self
+                .value
+                .replace(|ch| ch == '.' || ch == ',' || ch == '?' || ch == '!', ""),
+        }
     }
 }
