@@ -12,8 +12,7 @@ pub enum RhFactor {
     Negative = 2,
 }
 
-#[derive(Debug, PartialEq, Eq, PartialOrd)]
-// #[derive(PartialEq, Eq, PartialOrd)]
+#[derive(PartialEq, Eq, PartialOrd)]
 pub struct BloodType {
     pub antigen: Antigen,
     pub rh_factor: RhFactor,
