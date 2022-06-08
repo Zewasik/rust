@@ -1,9 +1,9 @@
 #[derive(Clone)]
-struct StringValue {
-    value: String,
+pub struct StringValue {
+    pub value: String,
 }
 
-trait AppendStr {
+pub trait AppendStr {
     fn append_str(self, new_str: String) -> Self;
 
     fn append_number(self, new_number: f64) -> Self;
