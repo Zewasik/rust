@@ -4,31 +4,28 @@ pub struct StringValue {
 }
 
 pub trait AppendStr {
-    fn append_str(self, new_str: String) -> Self;
+    fn append_str(&mut self, new_str: String) -> Self;
 
-    fn append_number(self, new_number: f64) -> Self;
+    fn append_number(&mut self, new_number: f64) -> Self;
 
-    fn remove_punctuation_marks(self) -> Self;
+    fn remove_punctuation_marks(&mut self) -> Self;
 }
 
 impl AppendStr for StringValue {
-    fn append_str(self, new_str: String) -> Self {
-        Self {
-            value: self.value + &new_str,
-        }
+    fn append_str(&mut self, new_str: String) -> Self {
+        self.value.push_str(&new_str);
+        self.clone()
     }
 
-    fn append_number(self, new_number: f64) -> Self {
-        Self {
-            value: self.value + &new_number.to_string(),
-        }
+    fn append_number(&mut self, new_number: f64) -> Self {
+        self.value.push_str(&new_number.to_string());
+        self.clone()
     }
 
-    fn remove_punctuation_marks(self) -> Self {
-        Self {
-            value: self
-                .value
-                .replace(|ch| ch == '.' || ch == ',' || ch == '?' || ch == '!', ""),
-        }
+    fn remove_punctuation_marks(&mut self) -> Self {
+        self.value = self
+            .value
+            .replace(|ch| ch == '.' || ch == ',' || ch == '?' || ch == '!', "");
+        self.clone()
     }
 }
