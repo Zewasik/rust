@@ -43,7 +43,7 @@ impl Scalar for i32 {
 }
 
 impl Scalar for i64 {
-    type Item = u32;
+    type Item = i64;
 
     fn zero() -> Self::Item {
         0
