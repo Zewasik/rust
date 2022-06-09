@@ -26,13 +26,13 @@ impl FromStr for Antigen {
     type Err = Error;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
-        if s.contains("AB") {
+        if s.contains("AB") && s.len() == 3 {
             Ok(Self::AB)
-        } else if s.contains("A") {
+        } else if s.contains("A") && s.len() == 2 {
             Ok(Self::A)
-        } else if s.contains("B") {
+        } else if s.contains("B") && s.len() == 2 {
             Ok(Self::B)
-        } else if s.contains("O") {
+        } else if s.contains("O") && s.len() == 2 {
             Ok(Self::O)
         } else {
             panic!()
@@ -64,13 +64,10 @@ impl FromStr for BloodType {
     type Err = Error;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
-        let anti = s.parse().unwrap();
-        let rh = s.parse().unwrap();
+        let antigen = s.parse().unwrap();
+        let rh_factor = s.parse().unwrap();
 
-        Ok(BloodType {
-            antigen: anti,
-            rh_factor: rh,
-        })
+        Ok(BloodType { antigen, rh_factor })
     }
 }
 
