@@ -1,15 +1,15 @@
 #[derive(Debug, PartialEq, Eq, Clone, PartialOrd, Ord)]
 pub enum Antigen {
-    A = 3,
-    AB = 1,
-    B = 4,
-    O = 2,
+    AB,
+    O,
+    A,
+    B,
 }
 
 #[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone)]
 pub enum RhFactor {
-    Positive = 1,
-    Negative = 2,
+    Positive,
+    Negative,
 }
 
 #[derive(PartialEq, Eq, PartialOrd)]
@@ -18,7 +18,7 @@ pub struct BloodType {
     pub rh_factor: RhFactor,
 }
 
-// use std::cmp::{Ord, Ordering};
+use std::cmp::{Ord, Ordering};
 
 use std::{io::Error, str::FromStr};
 
@@ -54,7 +54,11 @@ impl FromStr for RhFactor {
     }
 }
 
-// impl Ord for BloodType {}
+impl Ord for BloodType {
+    fn cmp(&self, other: &Self) -> Ordering {
+        (&self.antigen, &self.rh_factor).cmp(&(&other.antigen, &other.rh_factor))
+    }
+}
 
 impl FromStr for BloodType {
     type Err = Error;
@@ -70,9 +74,27 @@ impl FromStr for BloodType {
     }
 }
 
-// use std::fmt::{self, Debug};
+use std::fmt::{self, Debug};
 
-// impl Debug for BloodType {}
+impl Debug for BloodType {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        let mut temp = String::new();
+
+        temp += match self.antigen {
+            Antigen::A => "A",
+            Antigen::B => "B",
+            Antigen::AB => "AB",
+            Antigen::O => "O",
+        };
+
+        temp += match self.rh_factor {
+            RhFactor::Positive => "+",
+            RhFactor::Negative => "-",
+        };
+
+        write!(f, "{}", temp)
+    }
+}
 
 impl BloodType {
     pub fn can_receive_from(&self, other: &Self) -> bool {

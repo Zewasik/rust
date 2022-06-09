@@ -2,7 +2,9 @@ use blood_types::*;
 
 fn main() {
     let blood_type: BloodType = "O+".parse().unwrap();
-    println!("recipients of O+ {:?}", blood_type.recipients());
+    let mut temp = blood_type.recipients();
+    temp.sort();
+    println!("recipients of O+ {:?}", temp);
     println!("donors of O+ {:?}", blood_type.donors());
     let another_blood_type: BloodType = "A-".parse().unwrap();
     println!(
