@@ -35,7 +35,7 @@ impl FromStr for Antigen {
         } else if s.contains("O") {
             Ok(Self::O)
         } else {
-            Ok(Self::O)
+            panic!()
         }
     }
 }
@@ -44,12 +44,12 @@ impl FromStr for RhFactor {
     type Err = Error;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
-        if s.contains("AB") {
+        if s.contains("+") {
             Ok(Self::Positive)
-        } else if s.contains("A") {
+        } else if s.contains("-") {
             Ok(Self::Negative)
         } else {
-            Ok(Self::Positive)
+            panic!()
         }
     }
 }
