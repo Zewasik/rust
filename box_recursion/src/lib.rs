@@ -26,12 +26,13 @@ impl WorkEnvironment {
     }
 
     pub fn remove_worker(&mut self) -> Option<String> {
-        let name = match self.grade.clone() {
-            Link::Some(wok) => (wok.worker_name.clone(), wok.next_worker),
-            Link::None => return None,
-        };
-        self.grade = name.1;
-        return Some(name.0);
+        match self.grade.clone() {
+            Link::Some(wok) => {
+                self.grade = wok.next_worker;
+                Some(wok.worker_name.clone())
+            }
+            Link::None => None,
+        }
     }
 
     pub fn search_worker(&self) -> Option<(String, String)> {
