@@ -1,4 +1,4 @@
-// use std::ops::{Add, Div, Mul, Sub};
+use std::ops::{Add, Div, Mul, Sub};
 
 pub trait Scalar: Sized {
     type Item;
@@ -8,7 +8,7 @@ pub trait Scalar: Sized {
 
 impl<T> Scalar for T
 where
-    T: From<u8>,
+    T: From<u8> + PartialEq + Add + Sub + Mul + Div,
 {
     type Item = T;
 
