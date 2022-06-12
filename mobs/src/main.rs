@@ -4,24 +4,24 @@ fn main() {
     let (mafia1, mafia2) = (
         Mob {
             name: "Hairy Giants".to_string(),
-            boss: Boss::new("Louie HaHa", 36),
+            boss: Boss::new("Louie HaHa".to_string(), 36),
             cities: vec![("San Francisco".to_string(), 7)],
             members: vec![
-                Member::new("Benny Eggs", member::Role::Soldier, 28),
-                Member::new("Jhonny", member::Role::Associate, 17),
-                Member::new("Greasy Thumb", member::Role::Soldier, 30),
-                Member::new("No Finger", member::Role::Caporegime, 32),
+                Member::new("Benny Eggs".to_string(), member::Role::Soldier, 28),
+                Member::new("Jhonny".to_string(), member::Role::Associate, 17),
+                Member::new("Greasy Thumb".to_string(), member::Role::Soldier, 30),
+                Member::new("No Finger".to_string(), member::Role::Caporegime, 32),
             ],
             wealth: 100000,
         },
         Mob {
             name: "Red Thorns".to_string(),
-            boss: Boss::new("Big Tuna", 30),
+            boss: Boss::new("Big Tuna".to_string(), 30),
             cities: vec![("San Jose".to_string(), 5)],
             members: vec![
-                Member::new("Knuckles", member::Role::Soldier, 25),
-                Member::new("Baldy Dom", member::Role::Caporegime, 36),
-                Member::new("Crazy Joe", member::Role::Underboss, 23),
+                Member::new("Knuckles".to_string(), member::Role::Soldier, 25),
+                Member::new("Baldy Dom".to_string(), member::Role::Caporegime, 36),
+                Member::new("Crazy Joe".to_string(), member::Role::Underboss, 23),
             ],
             wealth: 70000,
         },

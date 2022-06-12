@@ -14,14 +14,51 @@ pub struct Mob {
 }
 
 impl Mob {
-    pub fn recruit(&self, name: String, age: u8) {
-        // self.members.push(); // todo push Member
+    pub fn recruit(&mut self, name: String, age: u8) {
+        self.members
+            .push(Member::new(name, member::Role::Associate, age));
     }
 
-    pub fn attack(&self, other: Mob) {} // todo: remove last member if less power, if draw attackers lost
-                                        // if last member left -> winners takes cities and wealth
+    pub fn attack(&mut self, other: &mut Mob) {
+        let (mut loser, mut winner) = if &self.wealth > &other.wealth {
+            (other, self)
+        } else {
+            (self, other)
+        };
 
-    pub fn steal(&self, other: Mob, to_steal: u32) {} // steal wealth from another Mob, if wealth of target Mob < to_steal, steal all
+        loser.members.pop();
 
-    pub fn conquer_city(mobs: Vec<Mob>, city: (String, u8)) {} // if another doeasnt have that city then add to cities list
+        if loser.members.len() == 0 {
+            winner.cities.append(&mut loser.cities);
+            winner.wealth += loser.wealth;
+            loser.wealth = 0;
+        }
+    }
+
+    pub fn steal(&mut self, other: &mut Mob, to_steal: u32) {
+        if to_steal > other.wealth {
+            self.wealth += other.wealth;
+            other.wealth = 0;
+        } else {
+            self.wealth += to_steal;
+            other.wealth -= to_steal;
+        }
+    }
+
+    pub fn conquer_city(&mut self, mobs: Vec<Mob>, name: String, value: u8) {
+        let mut owned = false;
+
+        for mob in mobs {
+            for (find, _) in &mob.cities {
+                if *find == name && *self != mob {
+                    owned = true;
+                    break;
+                }
+            }
+        }
+
+        if !owned {
+            self.cities.push((name, value))
+        }
+    }
 }
