@@ -20,7 +20,7 @@ impl Mob {
     }
 
     pub fn attack(&mut self, other: &mut Mob) {
-        let (mut loser, mut winner) = if &self.wealth > &other.wealth {
+        let (mut loser, mut winner) = if &self.wealth > &other.wealth || self.members.len() != 0 {
             (other, self)
         } else {
             (self, other)

@@ -1,17 +1,12 @@
 use mobs::*;
 
 fn main() {
-    let (mafia1, mafia2) = (
+    let (mut mafia1, mut mafia2) = (
         Mob {
             name: "Hairy Giants".to_string(),
             boss: boss::new("Louie HaHa", 36),
             cities: vec![("San Francisco".to_string(), 7)],
-            members: vec![
-                member::new("Benny Eggs", member::Role::Soldier, 28),
-                member::new("Jhonny", member::Role::Associate, 17),
-                member::new("Greasy Thumb", member::Role::Soldier, 30),
-                member::new("No Finger", member::Role::Caporegime, 32),
-            ],
+            members: vec![],
             wealth: 100000,
         },
         Mob {
@@ -27,5 +22,8 @@ fn main() {
         },
     );
 
+    println!("{:?}\n{:?}", mafia1, mafia2);
+    println!();
+    mafia1.attack(&mut mafia2);
     println!("{:?}\n{:?}", mafia1, mafia2);
 }
