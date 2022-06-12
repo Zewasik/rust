@@ -8,9 +8,9 @@ pub enum Role {
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct Member {
-    name: String,
-    role: Role,
-    age: u8,
+    pub name: String,
+    pub role: Role,
+    pub age: u8,
 }
 
 impl Member {
@@ -22,8 +22,12 @@ impl Member {
             _ => (),
         }
     }
+}
 
-    pub fn new(name: String, role: Role, age: u8) -> Member {
-        Member { name, role, age }
+pub fn new(name: &str, role: Role, age: u8) -> Member {
+    Member {
+        name: name.to_string(),
+        role,
+        age,
     }
 }
