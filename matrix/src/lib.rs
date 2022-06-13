@@ -1,4 +1,4 @@
-use std::ops::{Add, Div, Mul, Sub};
+mod ops;
 pub trait Scalar: Sized {
     type Item;
     fn zero() -> Self::Item;
@@ -6,7 +6,7 @@ pub trait Scalar: Sized {
 }
 impl<T> Scalar for T
 where
-    T: From<u8> + PartialEq + Add + Sub + Mul + Div,
+    T: From<u8>,
 {
     type Item = T;
     fn zero() -> Self::Item {
@@ -16,7 +16,7 @@ where
         T::from(1)
     }
 }
-#[derive(Debug, PartialEq, Eq)]
+#[derive(Debug, PartialEq, Eq, Clone)]
 pub struct Matrix<T>(pub Vec<Vec<T>>);
 
 impl<T: Scalar<Item = T> + Clone> Matrix<T> {
