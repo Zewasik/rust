@@ -4,6 +4,8 @@ pub mod member;
 use crate::Boss;
 use crate::Member;
 
+use self::member::Role;
+
 #[derive(Debug, Clone, PartialEq)]
 pub struct Mob {
     pub name: String,
@@ -19,10 +21,22 @@ impl Mob {
             .push(member::new(name, member::Role::Associate, age));
     }
 
+    fn score(&self) -> usize {
+        let mut score = 0;
+        for member in &self.members {
+            match member.role {
+                Role::Associate => score += 1,
+                Role::Soldier => score += 2,
+                Role::Caporegime => score += 3,
+                Role::Underboss => score += 4,
+            }
+        }
+
+        score
+    }
+
     pub fn attack(&mut self, other: &mut Mob) {
-        let (mut loser, mut winner) = if (&self.wealth > &other.wealth || other.members.len() == 0)
-            && self.members.len() != 0
-        {
+        let (mut loser, mut winner) = if &self.score() > &other.score() {
             (other, self)
         } else {
             (self, other)
