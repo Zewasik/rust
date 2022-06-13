@@ -16,7 +16,7 @@ where
         T::from(1)
     }
 }
-
+#[derive(Debug, PartialEq, Eq)]
 pub struct Matrix<T>(pub Vec<Vec<T>>);
 
 impl<T: Scalar<Item = T> + Clone> Matrix<T> {
