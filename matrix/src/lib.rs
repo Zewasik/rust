@@ -1,3 +1,4 @@
+mod mult;
 mod ops;
 pub trait Scalar: Sized {
     type Item;
@@ -19,7 +20,7 @@ where
 #[derive(Debug, PartialEq, Eq, Clone)]
 pub struct Matrix<T>(pub Vec<Vec<T>>);
 
-impl<T: Scalar<Item = T> + Clone> Matrix<T> {
+impl<T: Scalar<Item = T> + Clone + PartialEq> Matrix<T> {
     pub fn new() -> Matrix<T> {
         Matrix(vec![vec![T::zero()]])
     }
@@ -34,5 +35,18 @@ impl<T: Scalar<Item = T> + Clone> Matrix<T> {
             matrix.0[i][i] = T::one();
         }
         matrix
+    }
+
+    pub fn calc_row_cal(&self) -> Option<(usize, usize)> {
+        let row = self.0[0].len();
+        let cal = self.0.len();
+
+        for v in &self.0 {
+            if v.len() != row {
+                return None;
+            }
+        }
+
+        Some((row, cal))
     }
 }
