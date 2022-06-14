@@ -3,7 +3,7 @@ use colored::*;
 use std::fmt;
 
 #[derive(Debug, Eq, PartialEq)]
-enum Position {
+pub enum Position {
     Top,
     Bottom,
     Center,
