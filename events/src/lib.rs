@@ -11,10 +11,10 @@ pub enum Position {
 
 #[derive(Debug, Eq, PartialEq)]
 pub struct Notification {
-    size: u32,
-    color: (u8, u8, u8),
-    position: Position,
-    content: String,
+    pub size: u32,
+    pub color: (u8, u8, u8),
+    pub position: Position,
+    pub content: String,
 }
 
 #[derive(Debug)]
