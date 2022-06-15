@@ -2,6 +2,12 @@ pub struct Collatz {
     pub v: u64,
 }
 
+impl Collatz {
+    pub fn new(v: u64) -> Collatz {
+        Collatz { v }
+    }
+}
+
 // impl Iterator for Collatz {}
 
 pub fn collatz(n: u64) -> Option<u64> {
