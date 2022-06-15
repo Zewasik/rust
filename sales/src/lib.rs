@@ -31,16 +31,17 @@ impl Cart {
     }
 
     pub fn generate_receipt(&mut self) -> Vec<f32> {
-        let mut temp: Vec<f32> = self.items.iter().map(|x| x.1).collect();
-        temp.sort_by(|a, b| a.partial_cmp(b).unwrap());
-        let coef: f32 = temp[temp.len() / 3..].iter().sum::<f32>() / temp.iter().sum::<f32>();
+        let mut receipt_vec: Vec<f32> = self.items.iter().map(|x| x.1).collect();
+        receipt_vec.sort_by(|a, b| a.partial_cmp(b).unwrap());
 
-        temp = temp
+        let coef = receipt_vec[receipt_vec.len() / 3..].iter().sum::<f32>()
+            / receipt_vec.iter().sum::<f32>();
+
+        self.receipt = receipt_vec
             .iter()
             .map(|x| (x * 100.0 * coef).round() / 100.0)
             .collect();
 
-        self.receipt = temp.clone();
-        temp
+        self.receipt.clone()
     }
 }
