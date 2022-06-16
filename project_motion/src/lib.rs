@@ -37,7 +37,8 @@ impl Iterator for ThrowObject {
                 + self.init_velocity.y * self.time
                 + 0.5 * (-9.8 * self.time * self.time),
         );
-        self.actual_position.x = round_2_digits(self.init_position.x + self.init_velocity.x);
+        self.actual_position.x =
+            round_2_digits(self.init_position.x + self.init_velocity.x * self.time);
         self.actual_velocity.y = round_2_digits(self.init_velocity.y + (-9.8 * self.time));
 
         if self.actual_position.y >= 0.0 {
