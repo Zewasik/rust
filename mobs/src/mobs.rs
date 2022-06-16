@@ -1,10 +1,7 @@
 pub mod boss;
 pub mod member;
 
-use crate::Boss;
-use crate::Member;
-
-use self::member::Role;
+pub use {boss::*, member::*};
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct Mob {
