@@ -94,7 +94,7 @@ impl Iterator for RomanNumber {
             } else if now > prev && now > sum {
                 now - sum
             } else {
-                sum + now - prev
+                sum + now - prev * 2
             };
 
             prev = now;
