@@ -1,5 +1,4 @@
-use std::hash::Hash;
-use std::{cmp, collections::HashMap};
+use std::{cmp, collections::HashMap, hash::Hash};
 
 pub fn slices_to_map<'a, T, U>(k: &'a [T], v: &'a [U]) -> HashMap<&'a T, &'a U>
 where
