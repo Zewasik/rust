@@ -75,9 +75,11 @@ impl Iterator for RomanNumber {
     fn next(&mut self) -> Option<Self::Item> {
         let mut sum = 0;
         println!("{:?}", self);
+        let mut prev = 500;
 
         for digit in &self.0 {
-            let get_num = match digit {
+            let now = match digit {
+                RomanDigit::Nulla => 0,
                 RomanDigit::I => 1,
                 RomanDigit::V => 5,
                 RomanDigit::X => 10,
@@ -85,13 +87,17 @@ impl Iterator for RomanNumber {
                 RomanDigit::C => 100,
                 RomanDigit::D => 500,
                 RomanDigit::M => 1000,
-                RomanDigit::Nulla => 0,
             };
-            sum = if get_num <= sum || sum == 0 {
-                sum + get_num
+
+            sum = if now <= prev {
+                sum + now
+            } else if now > prev && now > sum {
+                now - sum
             } else {
-                get_num - sum
+                sum + now - prev
             };
+
+            prev = now;
         }
 
         Some(RomanNumber::from(sum + 1))
